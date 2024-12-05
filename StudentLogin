@@ -1,0 +1,75 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class StudentLogin {
+
+    public static void main(String[] args) {
+        // Create the frame
+        JFrame frame = new JFrame("Student Login");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 400);
+        frame.setLocationRelativeTo(null); // Center the frame
+
+        // Create the login container panel
+        JPanel loginContainer = new JPanel();
+        loginContainer.setLayout(new BoxLayout(loginContainer, BoxLayout.Y_AXIS));
+        loginContainer.setBackground(Color.WHITE);
+        loginContainer.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        loginContainer.setPreferredSize(new Dimension(300, 300));
+
+        // Add logo
+        ImageIcon logo = new ImageIcon("path/to/logo.jpg"); // Update the path to your logo
+        JLabel logoLabel = new JLabel(logo);
+        logoLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        loginContainer.add(logoLabel);
+
+        // Title
+        JLabel titleLabel = new JLabel("Student Login");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        loginContainer.add(titleLabel);
+
+        // Username label and text field
+        JLabel usernameLabel = new JLabel("Username:");
+        usernameLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        loginContainer.add(usernameLabel);
+
+        JTextField usernameField = new JTextField();
+        usernameField.setAlignmentX(Component.LEFT_ALIGNMENT);
+        loginContainer.add(usernameField);
+
+        // Password label and password field
+        JLabel passwordLabel = new JLabel("Password:");
+        passwordLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        loginContainer.add(passwordLabel);
+
+        JPasswordField passwordField = new JPasswordField();
+        passwordField.setAlignmentX(Component.LEFT_ALIGNMENT);
+        loginContainer.add(passwordField);
+
+        // Login button
+        JButton loginButton = new JButton("Login");
+        loginButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        loginButton.setBackground(new Color(0, 123, 255));
+        loginButton.setForeground(Color.WHITE);
+        loginButton.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        loginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Handle login logic here
+                String username = usernameField.getText();
+                String password = new String(passwordField.getPassword());
+                // You can add authentication logic here
+                JOptionPane.showMessageDialog(frame, "Username: " + username + "\nPassword: " + password);
+            }
+        });
+        loginContainer.add(loginButton);
+
+        // Add the login container to the frame
+        frame.add(loginContainer);
+        frame.getContentPane().setBackground(new Color(240, 240, 240)); // Set background color
+        frame.setVisible(true);
+    }
+}
